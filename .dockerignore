@@ -1,0 +1,9 @@
+# Create .dockerignore file
+target/
+.git/
+.gitignore
+.mvn/
+*.md
+Jenkinsfile
+.idea/
+*.iml
