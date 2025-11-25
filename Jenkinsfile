@@ -13,6 +13,25 @@ pipeline {
         APP_PORT = '8089'
     }
     
+    stage('Run Tests') {
+    steps {
+        echo '=== Running Unit Tests ==='
+        script {
+            try {
+                sh 'mvn test'
+            } catch (Exception e) {
+                echo "Tests failed: ${e.getMessage()}"
+                echo "Continuing pipeline anyway..."
+                currentBuild.result = 'UNSTABLE'
+            }
+        }
+    }
+    post {
+        always {
+            junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
+        }
+    }
+}
     stages {
         stage('📥 Checkout') {
             steps {
