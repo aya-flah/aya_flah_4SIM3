@@ -1,9 +1,12 @@
-# Create .dockerignore file
-target/
-.git/
+.git
 .gitignore
-.mvn/
+.mvn
+target/classes
+target/test-classes
+target/maven-status
 *.md
 Jenkinsfile
-.idea/
+.idea
 *.iml
+.vscode
+node_modules
